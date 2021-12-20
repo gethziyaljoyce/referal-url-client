@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { Context } from "../../context/Context";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./UserHome.css";
 import { mobile } from "../../responsive";
 
@@ -30,12 +30,12 @@ const Container = styled.div`
 
 function UserHome() {
   const { user, dispatch } = useContext(Context);
-  const history = useNavigate();
+  const history = useHistory();
 
   const referalLink = `https://joyce-referal-url.netlify.com/${user.user.createdAt}/${user.user.name}/${user.user.id}`;
 
   console.log(user);
-
+console.log(user.position);
   const handleSubmit = async () => {
     try {
       await axios.delete(
@@ -70,7 +70,7 @@ function UserHome() {
                     id="fname"
                     name="fname"
                     value={referalLink}
-                    readonly
+                    readOnly
                     className="Link mx-4"
                   />
                 </div>

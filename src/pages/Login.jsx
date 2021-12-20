@@ -2,7 +2,7 @@ import axios from "axios";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useContext, useState } from "react";
 import { Card } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import * as YUP from "yup";
 import { Context } from "../context/Context";
 import TopNavbar from "../components/TopNavbar";
@@ -17,8 +17,8 @@ const MainContainer = styled.div`
   height: 100vh;
   width: 100vw;
   ${mobile({
-    width: "100vw",
-  })}
+  width: "100vw",
+})}
 `;
 
 // schema
@@ -32,7 +32,7 @@ const schema = YUP.object().shape({
 });
 
 export default function Login() {
-  const history = useNavigate();
+  const history = useHistory();
   const [dummy, setDummy] = useState(false);
   const [logRes, setLogRes] = useState(true);
   const { dispatch } = useContext(Context);
@@ -49,7 +49,6 @@ export default function Login() {
           password: values.password,
         }
       );
-      console.log();
       console.log(response.data);
       dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
       setLogRes(false);

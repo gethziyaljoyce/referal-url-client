@@ -7,7 +7,7 @@ import * as YUP from "yup";
 import { Link } from "react-router-dom";
 import TopNavbar from "../../components/TopNavbar";
 import { Context } from "../../context/Context";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import { mobile } from "../../responsive";
 
@@ -77,7 +77,7 @@ const Label = styled.label`
 
 function AdminCreate() {
   const { user } = useContext(Context);
-  const history = useNavigate();
+  const history = useHistory();
   const [loader, setLoader] = useState(false);
 
   const signInSchema = YUP.object().shape({

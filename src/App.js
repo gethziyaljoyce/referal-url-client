@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Route, Navigate, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import Login from "./pages/Login";
 import HomeMain from "./pages/HomeMain";
 import Register from "./pages/Register";
@@ -36,22 +36,22 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route exact path="/login" element={<Login/>} />
+      <Switch>
+        <Route exact path="/login" component={Login} />
         <Route exact path="/">
-          {noUserTrue && <Route exact path="/" element={<HomeMain/>} />}
-          {adminTrue && <Navigate exact to="/admin" />}
-          {userTrue && <Navigate exact to="/userhome" />}
+          {noUserTrue && <Route exact path="/" component={HomeMain} />}
+          {adminTrue && <Redirect exact to="/admin" />}
+          {userTrue && <Redirect exact to="/userhome" />}
         </Route>
-        <Route exact path="/userhome" element={<User/>} />
-        <Route exact path="/useredit" element={<UserEdit/>} />
-        <Route exact path="/userviewall" element={<UserViewAll/>} />
-        <Route exact path="/admin" element={<Admin/>} />
-        <Route exact path="/adminedit/:id" element={<AdminEdit/>} />
-        <Route exact path="/admincreate" element={<AdminCreate/>} />
-        <Route exact path="/register" element={<Register/>} />
-        <Route exact path="/:time/:name/:id" element={<Register/>} />
-      </Routes>
+        <Route exact path="/userhome" component={User} />
+        <Route exact path="/useredit" component={UserEdit} />
+        <Route exact path="/userviewall" component={UserViewAll} />
+        <Route exact path="/admin" component={Admin} />
+        <Route exact path="/adminedit/:id" component={AdminEdit} />
+        <Route exact path="/admincreate" component={AdminCreate} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/:time/:name/:id" component={Register} />
+      </Switch>
     </Router>
   );
 }

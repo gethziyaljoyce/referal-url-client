@@ -4,7 +4,7 @@ import * as YUP from "yup";
 import axios from "axios";
 import styled from "styled-components";
 import { Context } from "../../context/Context";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import TopNavbar from "../../components/TopNavbar";
 import Loader from "react-loader-spinner";
 
@@ -66,7 +66,7 @@ const Label = styled.label`
 `;
 
 function UserEdit() {
-  const history = useNavigate();
+  const history = useHistory();
   const [loader, setLoader] = useState(false);
 
   const { user, dispatch } = useContext(Context);

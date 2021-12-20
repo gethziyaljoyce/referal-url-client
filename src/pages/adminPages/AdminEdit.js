@@ -8,7 +8,7 @@ import * as YUP from "yup";
 import { Link } from "react-router-dom";
 import TopNavbar from "../../components/TopNavbar";
 import { Context } from "../../context/Context";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import { mobile } from "../../responsive";
 
@@ -78,7 +78,7 @@ function AdminEdit2() {
   const { user } = useContext(Context);
   const [userFetched, setUser] = useState({});
   const params = useParams();
-  const history = useNavigate();
+  const history = useHistory();
   const [loader, setLoader] = useState(false);
 
   const signInSchema = YUP.object().shape({

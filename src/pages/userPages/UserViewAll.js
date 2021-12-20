@@ -69,7 +69,9 @@ function UserViewAll() {
       console.log(loading);
       setLoading(true);
       setUsers(res.data);
-    } catch {}
+    } catch (err){
+      console.log(err);
+    }
   };
 
   useEffect(() => {

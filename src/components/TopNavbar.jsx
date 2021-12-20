@@ -4,7 +4,7 @@ import Logo from "../assets/img.png";
 import styled from "styled-components";
 import { Context } from "../context/Context";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { mobile } from "../responsive";
 
 const Image = styled.img`
@@ -30,7 +30,7 @@ const NavLink = styled.div`
 
 export default function TopNavbar() {
   const { user, dispatch } = useContext(Context);
-  const history = useNavigate();
+  const history = useHistory();
 
   const handleClick = async () => {
     history.push("/");
